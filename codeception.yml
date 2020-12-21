@@ -1,4 +1,4 @@
-namespace: fond-of-spryker/google-tagmanager
+namespace: fond-of-spryker/enhanced-ecommerce-impression-connector
 
 suites:
   unit:
