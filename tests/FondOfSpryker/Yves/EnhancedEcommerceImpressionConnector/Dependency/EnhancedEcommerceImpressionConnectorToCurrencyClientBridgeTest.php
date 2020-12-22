@@ -11,7 +11,7 @@ class EnhancedEcommerceImpressionConnectorToCurrencyClientBridgeTest extends Uni
     /**
      * @return void
      */
-    public function getCurrent(): void
+    public function testGetCurrent(): void
     {
         $currencyClientMock = $this->getMockBuilder(CurrencyClientInterface::class)
             ->disableOriginalConstructor()
@@ -26,6 +26,6 @@ class EnhancedEcommerceImpressionConnectorToCurrencyClientBridgeTest extends Uni
             ->willReturn($currencyTransferMock);
 
         $bridge = new EnhancedEcommerceImpressionConnectorToCurrencyClientBridge($currencyClientMock);
-        $bridge->getCurrent();
+        $currencyTransfer = $bridge->getCurrent();
     }
 }
