@@ -4,6 +4,7 @@ namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander;
 
 use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants as ModuleConstants;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
+use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig;
 use Generated\Shared\Transfer\EcImpressionsTransfer;
 use Generated\Shared\Transfer\EnhancedEcommerceProductTransfer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
@@ -21,14 +22,23 @@ class DataLayerExpander implements DataLayerExpanderInterface
     protected $moneyPlugin;
 
     /**
+     * @var \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig
+     */
+    protected $config;
+
+    /**
      * @param \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface $currencyClient
+     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface $moneyPlugin
+     * @param \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig $config
      */
     public function __construct(
         EnhancedEcommerceImpressionConnectorToCurrencyClientInterface $currencyClient,
-        MoneyPluginInterface $moneyPlugin
+        MoneyPluginInterface $moneyPlugin,
+        EnhancedEcommerceImpressionConnectorConfig $config
     ) {
         $this->currencyClient = $currencyClient;
         $this->moneyPlugin = $moneyPlugin;
+        $this->config = $config;
     }
 
     /**
@@ -45,7 +55,10 @@ class DataLayerExpander implements DataLayerExpanderInterface
 
         $this->addProducts($page, $twigVariableBag, $ecImpressionsTransfer);
 
-        return ['ec_impressions' => $ecImpressionsTransfer->toArray()];
+        return [
+        'ec_impressions' => $this->removeEmptyArrayIndex(
+            $ecImpressionsTransfer->toArray()
+        )];
     }
 
     /**
@@ -64,7 +77,7 @@ class DataLayerExpander implements DataLayerExpanderInterface
                 ->setPrice($this->getProductPrice($product))
                 ->setVariant($this->getProductAttrStyle($product))
                 ->setList(isset($twigVariableBag[ModuleConstants::PARAM_LIST]) ? $twigVariableBag[ModuleConstants::PARAM_LIST] : $pageType)
-                ->setPosition($index);
+                ->setPosition($index + 1);
 
             $ecImpressionsTransfer->addImpressions($enhancedEcommerceProductTransfer);
         }
@@ -124,5 +137,25 @@ class DataLayerExpander implements DataLayerExpanderInterface
         }
 
         return 0;
+    }
+
+    /**
+     * @param array $haystack
+     *
+     * @return array
+     */
+    protected function removeEmptyArrayIndex(array $haystack): array
+    {
+        foreach ($haystack as $key => $value) {
+            if (is_array($value)) {
+                $haystack[$key] = $this->removeEmptyArrayIndex($haystack[$key]);
+            }
+
+            if (!$value && !in_array($key, $this->config->getDontUnsetArrayIndex())) {
+                unset($haystack[$key]);
+            }
+        }
+
+        return $haystack;
     }
 }

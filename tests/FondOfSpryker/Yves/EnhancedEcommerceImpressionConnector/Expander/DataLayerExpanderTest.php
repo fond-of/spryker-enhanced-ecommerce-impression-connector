@@ -4,6 +4,7 @@ namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander;
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
+use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\Container;
 
@@ -18,6 +19,11 @@ class DataLayerExpanderTest extends Unit
      * @var \PHPUnit\Framework\MockObject\MockObject|\FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface
      */
     protected $currencyClientMock;
+
+    /**
+     * @var \PHPUnit\Framework\MockObject\MockObject|\FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig
+     */
+    protected $configMock;
 
     /**
      * @var DataLayerExpanderInterface
@@ -41,7 +47,11 @@ class DataLayerExpanderTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->expander = new DataLayerExpander($this->currencyClientMock, $this->moneyPluginMock);
+        $this->configMock = $this->getMockBuilder(EnhancedEcommerceImpressionConnectorConfig::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->expander = new DataLayerExpander($this->currencyClientMock, $this->moneyPluginMock, $this->configMock);
     }
 
     /**

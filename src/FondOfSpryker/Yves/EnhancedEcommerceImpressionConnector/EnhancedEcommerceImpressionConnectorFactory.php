@@ -8,6 +8,12 @@ use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander\DataLayerEx
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
+/**
+ * Class EnhancedEcommerceImpressionConnectorFactory
+ *
+ * @package FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector
+ * @method \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig getConfig()
+ */
 class EnhancedEcommerceImpressionConnectorFactory extends AbstractFactory
 {
     /**
@@ -15,7 +21,7 @@ class EnhancedEcommerceImpressionConnectorFactory extends AbstractFactory
      */
     public function createDataLayerExpander(): DataLayerExpanderInterface
     {
-        return new DataLayerExpander($this->getCurrencyClient(), $this->getMoneyPlugin());
+        return new DataLayerExpander($this->getCurrencyClient(), $this->getMoneyPlugin(), $this->getConfig());
     }
 
     /**

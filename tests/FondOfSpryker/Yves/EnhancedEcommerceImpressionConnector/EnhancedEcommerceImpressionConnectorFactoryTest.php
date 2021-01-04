@@ -31,6 +31,11 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
     protected $factory;
 
     /**
+     * @var \PHPUnit\Framework\MockObject\MockObject|\FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig
+     */
+    protected $configMock;
+
+    /**
      * @return void
      */
     protected function _before(): void
@@ -47,8 +52,13 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
+        $this->configMock = $this->getMockBuilder(EnhancedEcommerceImpressionConnectorConfig::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->factory = new EnhancedEcommerceImpressionConnectorFactory();
         $this->factory->setContainer($this->containerMock);
+        $this->factory->setConfig($this->configMock);
     }
 
     /**

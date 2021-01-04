@@ -16,4 +16,6 @@ interface EnhancedEcommerceImpressionConnectorConstants
 
     public const PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED = 'model_untranslated';
     public const PARAM_PRODUCT_ATTR_MODEL = 'model';
+
+    public const CONFIG_DONT_UNSET_ARRAY_INDEX = 'CONFIG_DONT_UNSET_ARRAY_INDEX';
 }
