@@ -3,8 +3,8 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Plugin\DataLayer;
 
 use Codeception\Test\Unit;
+use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorFactory;
-use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander\DataLayerExpanderInterface;
 
 class ProductImpressionsExpanderPluginTest extends Unit
 {
@@ -37,7 +37,7 @@ class ProductImpressionsExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->expanderMock = $this->getMockBuilder(DataLayerExpanderInterface::class)
+        $this->expanderMock = $this->getMockBuilder(EnhancedEcommerceDataLayerExpanderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -61,7 +61,7 @@ class ProductImpressionsExpanderPluginTest extends Unit
     public function testExpand(): void
     {
         $this->factoryMock->expects($this->atLeastOnce())
-            ->method('createDataLayerExpander')
+            ->method('createImpressionDataLayerExpander')
             ->willReturn($this->expanderMock);
 
         $this->expanderMock->expects($this->atLeastOnce())

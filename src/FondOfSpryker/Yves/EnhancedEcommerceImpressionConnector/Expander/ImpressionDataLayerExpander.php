@@ -3,13 +3,14 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander;
 
 use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants as ModuleConstants;
+use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig;
 use Generated\Shared\Transfer\EcImpressionsTransfer;
 use Generated\Shared\Transfer\EnhancedEcommerceProductTransfer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 
-class DataLayerExpander implements DataLayerExpanderInterface
+class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderInterface
 {
     /**
      * @var \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface
@@ -56,9 +57,8 @@ class DataLayerExpander implements DataLayerExpanderInterface
         $this->addProducts($page, $twigVariableBag, $ecImpressionsTransfer);
 
         return [
-        'ec_impressions' => $this->removeEmptyArrayIndex(
-            $ecImpressionsTransfer->toArray()
-        )];
+            'ec_impressions' => $this->removeEmptyArrayIndex($ecImpressionsTransfer->toArray()),
+        ];
     }
 
     /**

@@ -33,7 +33,7 @@ class ProductImpressionsExpanderPlugin extends AbstractPlugin implements Enhance
     public function expand(string $page, array $twigVariableBag, array $dataLayer): array
     {
         return $this->getFactory()
-            ->createDataLayerExpander()
+            ->createImpressionDataLayerExpander()
             ->expand($page, $twigVariableBag, $dataLayer);
     }
 }

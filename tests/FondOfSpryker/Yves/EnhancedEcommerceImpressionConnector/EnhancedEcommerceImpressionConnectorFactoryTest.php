@@ -3,8 +3,8 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector;
 
 use Codeception\Test\Unit;
+use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
-use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander\DataLayerExpanderInterface;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\Container;
 
@@ -64,7 +64,7 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testCreateDataLayerExpander(): void
+    public function testCreateImpressionDataLayerExpander(): void
     {
         $this->containerMock->expects($this->atLeastOnce())
             ->method('has')
@@ -72,11 +72,11 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
 
         $this->containerMock->expects($this->atLeastOnce())
             ->method('get')
-            ->willReturn($this->currencyClientMock, $this->moneyPluginMock);
+            ->willReturn($this->currencyClientMock, $this->moneyPluginMock, $this->configMock);
 
         $this->assertInstanceOf(
-            DataLayerExpanderInterface::class,
-            $this->factory->createDataLayerExpander()
+            EnhancedEcommerceDataLayerExpanderInterface::class,
+            $this->factory->createImpressionDataLayerExpander()
         );
     }
 

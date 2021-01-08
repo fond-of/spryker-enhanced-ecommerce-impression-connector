@@ -8,7 +8,7 @@ use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImp
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\Container;
 
-class DataLayerExpanderTest extends Unit
+class ImpressionDataLayerExpanderTest extends Unit
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
@@ -51,7 +51,7 @@ class DataLayerExpanderTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->expander = new DataLayerExpander($this->currencyClientMock, $this->moneyPluginMock, $this->configMock);
+        $this->expander = new ImpressionDataLayerExpander($this->currencyClientMock, $this->moneyPluginMock, $this->configMock);
     }
 
     /**
