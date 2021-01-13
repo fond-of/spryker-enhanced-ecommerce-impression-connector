@@ -26,7 +26,7 @@ class ImpressionDataLayerExpanderTest extends Unit
     protected $configMock;
 
     /**
-     * @var DataLayerExpanderInterface
+     * @var \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface
      */
     protected $expander;
 
