@@ -72,7 +72,7 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
     {
         foreach ($twigVariableBag[ModuleConstants::PARAM_PRODUCTS] as $index => $product) {
             $enhancedEcommerceProductTransfer = (new EnhancedEcommerceProductTransfer())
-                ->setId($product[ModuleConstants::PARAM_PRODUCT_ID_PRODUCT_ABSTRACT])
+                ->setId($this->getProductSku($product))
                 ->setName($this->getProductName($product))
                 ->setPrice($this->getProductPrice($product))
                 ->setVariant($this->getProductAttrStyle($product))
@@ -83,6 +83,24 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
         }
 
         return $ecImpressionsTransfer;
+    }
+
+    /**
+     * @param array $product
+     *
+     * @return string
+     */
+    protected function getProductSku(array $product): string
+    {
+        if (isset($product[ModuleConstants::PARAM_PRODUCT_SKU])) {
+            return $product[ModuleConstants::PARAM_PRODUCT_SKU];
+        }
+
+        if (isset($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU])) {
+            return str_replace('ABSTRACT-', '', strtoupper($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU]));
+        }
+
+        return '';
     }
 
     /**

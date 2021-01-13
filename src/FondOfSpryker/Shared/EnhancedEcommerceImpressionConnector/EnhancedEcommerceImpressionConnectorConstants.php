@@ -6,7 +6,8 @@ interface EnhancedEcommerceImpressionConnectorConstants
 {
     public const PARAM_LIST = 'list';
     public const PARAM_PRODUCTS = 'products';
-    public const PARAM_PRODUCT_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+    public const PARAM_PRODUCT_SKU = 'sku';
+    public const PARAM_PRODUCT_ABSTRACT_SKU = 'abstract_sku';
     public const PARAM_PRODUCT_ABSTRACT_NAME = 'abstract_name';
     public const PARAM_PRODUCT_PRICE = 'price';
 
