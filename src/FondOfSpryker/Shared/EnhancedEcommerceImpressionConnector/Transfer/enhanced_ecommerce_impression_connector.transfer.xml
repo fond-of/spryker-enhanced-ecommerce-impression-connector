@@ -15,7 +15,7 @@
         <property name="id" type="string"/>
         <property name="name" type="string"/>
         <property name="variant" type="string"/>
-        <property name="price" type="float"/>
+        <property name="price" type="string"/>
         <property name="list" type="string"/>
         <property name="position" type="int"/>
     </transfer>

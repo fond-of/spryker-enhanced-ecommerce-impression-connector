@@ -74,7 +74,7 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
             $enhancedEcommerceProductTransfer = (new EnhancedEcommerceProductTransfer())
                 ->setId($this->getProductSku($product))
                 ->setName($this->getProductName($product))
-                ->setPrice($this->getProductPrice($product))
+                ->setPrice(''.$this->getProductPrice($product).'')
                 ->setVariant($this->getProductAttrStyle($product))
                 ->setList(isset($twigVariableBag[ModuleConstants::PARAM_LIST]) ? $twigVariableBag[ModuleConstants::PARAM_LIST] : $pageType)
                 ->setPosition($index + 1);
@@ -146,7 +146,7 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
     /**
      * @param array $product
      *
-     * @return float
+     * @return string
      */
     protected function getProductPrice(array $product): float
     {
