@@ -57,7 +57,7 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
         $this->addProducts($page, $twigVariableBag, $ecImpressionsTransfer);
 
         return [
-            'ec_impressions' => $this->removeEmptyArrayIndex($ecImpressionsTransfer->toArray()),
+            'ec_impressions' => $this->removeEmptyArrayIndex($ecImpressionsTransfer->toArray(true, true)),
         ];
     }
 
