@@ -13,9 +13,9 @@ class EnhancedEcommerceImpressionConnectorDependencyProvider extends AbstractBun
     public const PLUGIN_MONEY = 'PLUGIN_MONEY';
 
     /**
-     * @param \Spryker\Glue\Kernel\Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Glue\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
@@ -26,9 +26,9 @@ class EnhancedEcommerceImpressionConnectorDependencyProvider extends AbstractBun
     }
 
     /**
-     * @param \Spryker\Glue\Kernel\Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Glue\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addCurrencyClient(Container $container): Container
     {
