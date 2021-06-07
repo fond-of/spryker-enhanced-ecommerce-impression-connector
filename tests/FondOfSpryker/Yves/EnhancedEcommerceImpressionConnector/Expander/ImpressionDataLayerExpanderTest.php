@@ -31,6 +31,11 @@ class ImpressionDataLayerExpanderTest extends Unit
     protected $expander;
 
     /**
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\Kernel\Container
+     */
+    protected $containerMock;
+
+    /**
      * @return void
      */
     protected function _before(): void

@@ -13,7 +13,7 @@ class EnhancedEcommerceImpressionConnectorDependencyProviderTest extends Unit
     protected $containerMock;
 
     /**
-     * @var \FondOfSpryker\Yves\GoogleTagManagerQuoteConnector\GoogleTagManagerQuoteConnectorDependencyProvider
+     * @var \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorDependencyProvider
      */
     protected $dependencyProvider;
 
