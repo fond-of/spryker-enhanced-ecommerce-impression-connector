@@ -110,18 +110,24 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
      */
     protected function getProductName(array $product): string
     {
-        if (isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED]) &&
-            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED])) {
+        if (
+            isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED]) &&
+            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED])
+        ) {
             return $product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED];
         }
 
-        if (isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL]) &&
-            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL])) {
+        if (
+            isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL]) &&
+            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL])
+        ) {
             return $product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_MODEL];
         }
 
-        if (isset($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_NAME]) &&
-            !empty($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_NAME])) {
+        if (
+            isset($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_NAME]) &&
+            !empty($product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_NAME])
+        ) {
             return $product[ModuleConstants::PARAM_PRODUCT_ABSTRACT_NAME];
         }
 
@@ -135,15 +141,17 @@ class ImpressionDataLayerExpander implements EnhancedEcommerceDataLayerExpanderI
      */
     protected function getProductAttrStyle(array $product): string
     {
-        if (isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED]) &&
-            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED]))
-        {
+        if (
+            isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED]) &&
+            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED])
+        ) {
             return $product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED];
         }
 
-        if (isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE]) &&
-            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE]))
-        {
+        if (
+            isset($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE]) &&
+            !empty($product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE])
+        ) {
             return $product[ModuleConstants::PARAM_PRODUCT_ATTR][ModuleConstants::PARAM_PRODUCT_ATTR_STYLE];
         }
 
