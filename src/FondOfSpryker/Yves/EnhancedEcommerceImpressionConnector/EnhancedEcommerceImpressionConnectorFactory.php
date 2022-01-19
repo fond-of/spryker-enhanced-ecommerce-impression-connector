@@ -2,30 +2,23 @@
 
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector;
 
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
+use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRendererInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
-use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Expander\ImpressionDataLayerExpander;
+use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer\ProductImpressionRenderer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 /**
- * Class EnhancedEcommerceImpressionConnectorFactory
- *
- * @package FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector
  * @method \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig getConfig()
  */
 class EnhancedEcommerceImpressionConnectorFactory extends AbstractFactory
 {
     /**
-     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRendererInterface
      */
-    public function createImpressionDataLayerExpander(): EnhancedEcommerceDataLayerExpanderInterface
+    public function createProductImpressionRenderer(): EnhancedEcommerceRendererInterface
     {
-        return new ImpressionDataLayerExpander(
-            $this->getCurrencyClient(),
-            $this->getMoneyPlugin(),
-            $this->getConfig()
-        );
+        return new ProductImpressionRenderer($this->getCurrencyClient(), $this->getMoneyPlugin(), $this->getConfig());
     }
 
     /**

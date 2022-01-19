@@ -1,0 +1,20 @@
+datalayer = {
+    "ec_impressions": {
+        "currency_code": "{{ enhancedEcommece.currencyCode }}",
+        "impressions": [
+            {% for product in enhancedEcommece.impressions %}
+            {
+                "id": "{{ product.id }}",
+                "list": "{{ product.list }}",
+                "name": "{{ product.name }}",
+                "position": {{ loop.index }},
+                "variant": "{{ product.variant }}",
+                "price": "{{ product.price }}",
+            }{% if loop.last != true %},{% endif %}
+            {% endfor %}
+        ]
+    }
+};
+
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push(datalayer);

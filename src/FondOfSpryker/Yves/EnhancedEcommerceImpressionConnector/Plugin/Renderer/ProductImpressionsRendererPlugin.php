@@ -1,15 +1,16 @@
 <?php
 
-namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Plugin\DataLayer;
+namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Plugin\Renderer;
 
 use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants as ModuleConstants;
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderPluginInterface;
+use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRenderePluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
+use Twig\Environment;
 
 /**
  * @method \FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorFactory getFactory()
  */
-class ProductImpressionsExpanderPlugin extends AbstractPlugin implements EnhancedEcommerceDataLayerExpanderPluginInterface
+class ProductImpressionsRendererPlugin extends AbstractPlugin implements EnhancedEcommerceRenderePluginInterface
 {
     /**
      * @param string $pageType
@@ -24,16 +25,16 @@ class ProductImpressionsExpanderPlugin extends AbstractPlugin implements Enhance
     }
 
     /**
-     * @param string $page
-     * @param array $twigVariableBag
-     * @param array $dataLayer
+     * @param \Twig\Environment $twig
+     * @param string            $page
+     * @param array             $twigVariableBag
      *
-     * @return array
+     * @return string
      */
-    public function expand(string $page, array $twigVariableBag, array $dataLayer): array
+    public function render(Environment $twig, string $page, array $twigVariableBag): string
     {
         return $this->getFactory()
-            ->createImpressionDataLayerExpander()
-            ->expand($page, $twigVariableBag, $dataLayer);
+            ->createProductImpressionRenderer()
+            ->render($twig, $page, $twigVariableBag);
     }
 }

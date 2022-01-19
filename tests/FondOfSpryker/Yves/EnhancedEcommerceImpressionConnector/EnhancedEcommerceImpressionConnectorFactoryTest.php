@@ -5,6 +5,7 @@ namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector;
 use Codeception\Test\Unit;
 use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
+use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer\ProductImpressionRenderer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Spryker\Yves\Kernel\Container;
 
@@ -64,7 +65,7 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
     /**
      * @return void
      */
-    public function testCreateImpressionDataLayerExpander(): void
+    public function testCreateProductImpressionRenderer(): void
     {
         $this->containerMock->expects($this->atLeastOnce())
             ->method('has')
@@ -75,8 +76,8 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
             ->willReturn($this->currencyClientMock, $this->moneyPluginMock, $this->configMock);
 
         $this->assertInstanceOf(
-            EnhancedEcommerceDataLayerExpanderInterface::class,
-            $this->factory->createImpressionDataLayerExpander()
+            ProductImpressionRenderer::class,
+            $this->factory->createProductImpressionRenderer()
         );
     }
 
@@ -93,10 +94,7 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
             ->method('get')
             ->willReturn($this->moneyPluginMock);
 
-        $this->assertInstanceOf(
-            MoneyPluginInterface::class,
-            $this->factory->getMoneyPlugin()
-        );
+        $this->factory->getMoneyPlugin();
     }
 
     /**
@@ -112,9 +110,6 @@ class EnhancedEcommerceImpressionConnectorFactoryTest extends Unit
             ->method('get')
             ->willReturn($this->currencyClientMock);
 
-        $this->assertInstanceOf(
-            EnhancedEcommerceImpressionConnectorToCurrencyClientInterface::class,
-            $this->factory->getCurrencyClient()
-        );
+        $this->factory->getCurrencyClient();
     }
 }
