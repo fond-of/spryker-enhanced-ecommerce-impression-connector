@@ -3,7 +3,6 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer\ProductImpressionRenderer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;

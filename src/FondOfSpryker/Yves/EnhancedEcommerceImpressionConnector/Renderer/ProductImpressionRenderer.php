@@ -44,8 +44,8 @@ class ProductImpressionRenderer implements EnhancedEcommerceRendererInterface
 
     /**
      * @param \Twig\Environment $twig
-     * @param string            $page
-     * @param array             $twigVariableBag
+     * @param string $page
+     * @param array $twigVariableBag
      *
      * @return string
      */
