@@ -6,6 +6,7 @@ use Codeception\Test\Unit;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorFactory;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer\ProductImpressionRenderer;
 use Twig\Environment;
+use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants;
 
 class ProductImpressionsExpanderPluginTest extends Unit
 {
@@ -30,11 +31,6 @@ class ProductImpressionsExpanderPluginTest extends Unit
     protected $plugin;
 
     /**
-     * @var array
-     */
-    protected $twigVariableBag;
-
-    /**
      * @return void
      */
     protected function _before(): void
@@ -51,8 +47,6 @@ class ProductImpressionsExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->twigVariableBag = include codecept_data_dir('twigVariableBag.php');
-
         $this->plugin = new ProductImpressionsRendererPlugin();
         $this->plugin->setFactory($this->factoryMock);
     }
@@ -62,7 +56,11 @@ class ProductImpressionsExpanderPluginTest extends Unit
      */
     public function testIsApplicable(): void
     {
-        $this->assertEquals(true, $this->plugin->isApplicable('pageType', $this->twigVariableBag));
+        $this->assertEquals(true, $this->plugin->isApplicable('pageType', [
+            EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCTS => [
+                'product1', 'product2'
+            ]
+        ]));
     }
 
     /**
@@ -78,6 +76,6 @@ class ProductImpressionsExpanderPluginTest extends Unit
             ->method('render')
             ->willReturn('rendered template as string');
 
-        $this->plugin->render($this->twigMock, 'pageType', $this->twigVariableBag);
+        $this->plugin->render($this->twigMock, 'pageType', ['product1', 'product2']);
     }
 }
