@@ -3,13 +3,12 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer;
 
 use Codeception\Test\Unit;
+use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Dependency\EnhancedEcommerceImpressionConnectorToCurrencyClientInterface;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConfig;
 use Generated\Shared\Transfer\CurrencyTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use Twig\Environment;
-use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants;
 
 class ProductImpressionRendererTest extends Unit
 {
@@ -104,10 +103,10 @@ class ProductImpressionRendererTest extends Unit
                     EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCT_PRICE => 3990,
                     EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCT_ATTR => [
                         EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCT_ATTR_MODEL_UNTRANSLATED => 'untranslated model',
-                        EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED => 'untranslated style'
-                    ]
-                ]
-            ]
+                        EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCT_ATTR_STYLE_UNTRANSLATED => 'untranslated style',
+                    ],
+                ],
+            ],
         ]);
     }
 

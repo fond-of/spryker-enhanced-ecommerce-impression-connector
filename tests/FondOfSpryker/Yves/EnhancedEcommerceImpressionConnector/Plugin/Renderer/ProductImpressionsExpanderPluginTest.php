@@ -3,10 +3,10 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Plugin\Renderer;
 
 use Codeception\Test\Unit;
+use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorFactory;
 use FondOfSpryker\Yves\EnhancedEcommerceImpressionConnector\Renderer\ProductImpressionRenderer;
 use Twig\Environment;
-use FondOfSpryker\Shared\EnhancedEcommerceImpressionConnector\EnhancedEcommerceImpressionConnectorConstants;
 
 class ProductImpressionsExpanderPluginTest extends Unit
 {
@@ -58,8 +58,8 @@ class ProductImpressionsExpanderPluginTest extends Unit
     {
         $this->assertEquals(true, $this->plugin->isApplicable('pageType', [
             EnhancedEcommerceImpressionConnectorConstants::PARAM_PRODUCTS => [
-                'product1', 'product2'
-            ]
+                'product1', 'product2',
+            ],
         ]));
     }
 
