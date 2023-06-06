@@ -11,7 +11,7 @@
   "require": {
     "php": ">=7.2",
     "spryker/money": "^1.0 || ^2.0",
-    "spryker/currency": "^3.2.0",
+    "spryker/currency": "^3.0.0 || ^4.0.0",
     "fond-of-spryker/enhanced-ecommerce-extension": "^2.0.0"
   },
   "require-dev": {
